@@ -7,13 +7,16 @@ def make_prediction(input_row: list, coefficients: float) -> object:
 
 
 def using_sgd_method_to_calculate_coefficients(training_dataset, learning_rate, n_times_epoch):
+    # 建立一个coefficients列表，内有len(training_dataset[0])个元素，每个元素均为0.0
     coefficients = [0.0 for i in range(len(training_dataset[0]))]
     for epoch in range(n_times_epoch):
+        # 建立the_sum_of_error用来观测过程中的误差
         the_sum_of_error = 0
         for row in training_dataset:
             y_hat = make_prediction(row, coefficients)
             error = y_hat - row[-1]
             the_sum_of_error += error ** 2
+            # 先计算b_0,再用for计算其余系数b
             coefficients[0] = coefficients[0] - learning_rate * error
             for i in range(len(row)-1):
                 coefficients[i+1] = coefficients[i+1] - learning_rate * error * row[i]
