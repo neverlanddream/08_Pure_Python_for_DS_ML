@@ -35,6 +35,7 @@ def csv_loader(filename):
 
 # 3.Convert our datatype
 
+# column变量可理解为模型使用的维度，本函数起始默认column=0，只转换了第一列数据放入dataset中，本例在后续计算使用for循环，转换所有列。
 def string_to_float_converter(dataset, column):
     for row in dataset:
         row[column] = float(row[column].strip())
@@ -86,8 +87,9 @@ def rmse_method(actual_data, predicted_data):
     return rmse
 
 
-# 8.how good is our algo by using cross validation
+# 8.how good is our algo by using cross validation【此函数是核心，1至11均围绕此函数编写】
 
+# 训练集是先删除一个fold，然后将该fold里的结果删除做成测试集。下例中row_copy[-1]是想放入test_set中，再将最后一列数变为None。*args需要理解。
 def how_good_is_our_algo(dataset, algo, n_folds, *args):
     folds = k_fold_cross_validation_split(dataset, n_folds)
     scores = list()
@@ -109,6 +111,7 @@ def how_good_is_our_algo(dataset, algo, n_folds, *args):
 
 # 9.make prediction
 
+# 通过 “y_hat +=” 的方式，可以实现多元回归时的确定最后的y_hat值，且不必预设多个回归元。
 def predict(row, coefficients):
     y_hat = coefficients[0]
     for i in range(len(row)-1):
@@ -157,7 +160,7 @@ normalization(dataset, min_and_max)
 
 
 # 14.How good is our algo
-n_fold = 10
+n_fold = 5
 learning_rate = 0.01
 n_epoch = 50
 
