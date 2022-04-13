@@ -45,13 +45,23 @@ string_dataset = [['2' , '2' , 'rock'],
                   ['10', '4' , 'mine']]
 
 counter = 0.0
-for i in range(len(string_dataset[0]) - 1):  # 一共61列，前60列都是属性，第61列是结果y。由counter可知，这里只转换前60列为浮点型。
-    change_string_to_float(string_dataset, i)
-    counter += 1
-print("将数据属性转换为浮点型，处理%.3f次后，如下："%(counter))
-print(string_dataset)
+# for i in range(len(string_dataset[0]) - 1):  # 一共61列，前60列都是属性，第61列是结果y。由counter可知，这里只转换前60列为浮点型。
+#     change_string_to_float(string_dataset, i)
+#     counter += 1
+# print("将数据属性转换为浮点型，处理%.3f次后，如下："%(counter))
+# print(string_dataset)
+#
+# search_tool = change_str_column_to_int(string_dataset, len(string_dataset[0]) - 1)
+# print("将string型的数据结果转换为浮点型，并映射，处理后，映射关系和数据如下：")
+# print(search_tool)
+# print(string_dataset)
 
-search_tool = change_str_column_to_int(string_dataset, len(string_dataset[0]) - 1)
-print("将string型的数据结果转换为浮点型，并映射，处理后，映射关系和数据如下：")
-print(search_tool)
-print(string_dataset)
+
+# 3.查看非空，or
+left = []
+right = []
+
+if not left or not right:
+    print(1)
+else:
+    print(2)
