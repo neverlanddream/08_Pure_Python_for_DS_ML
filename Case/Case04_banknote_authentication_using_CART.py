@@ -200,7 +200,7 @@ def decision_tree(train, test, max_depth, min_size):
 
 # 16.实际数据演练:数据读取与预处理
 seed(1)
-filename = 'data_banknote_authentication.csv'
+filename = 'C:/Users/MI/William_DataSci/08_Pure_Python_for_DS_ML/Base_Data/data_banknote_authentication.csv'
 dataset = csv_loader(filename)
 
 for i in range(len(dataset[0])):
